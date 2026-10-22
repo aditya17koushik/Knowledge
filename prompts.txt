@@ -1,0 +1,181 @@
+--- 1. Instruction Prompts (Direct Commands)
+Example 1
+Summarize this paragraph in 4 bullet points.
+
+Example 2
+Explain transformers in simple language.
+
+Example 3
+Convert this text into a professional email.
+
+
+
+--- 2. Zero-shot, One-shot, Few-shot Prompts
+A) Zero-shot (No examples)
+Example 1:
+Classify the sentiment as positive, negative, or neutral:
+"I am extremely disappointed."
+
+Example 2:
+Identify if this message is a scam or not:
+"Your bank account will be frozen. Verify immediately."
+
+Example 3:
+Summarize the text in 2 lines.
+
+B) One-shot (1 example)
+Example 1:
+Example:
+"Food was amazing!" → Positive
+
+Now classify:
+"The service was slow."
+
+Example 2:
+Example:
+"I am from your bank, share OTP." → Impersonation
+
+Text:
+"I am calling from your insurance company, tell me your PAN card number."
+Category:
+
+Example 3:
+Example:
+"Give me your location now." → Threat
+
+Text:
+"If you don’t pay today, you will regret it."
+
+C) Few-shot (2–3 examples)
+Example:
+Example 1:
+Text: "I’m from your bank, share OTP"
+Category: Impersonation
+
+Example 2:
+Text: "If you don’t send money, I'll expose your photos"
+Category: Emotional Manipulation
+
+Example 3:
+Text: "Pay ₹5000 now or consequences will follow"
+Category: Threat
+
+Now classify:
+"Your account is locked. Click the link to reactivate."
+
+--- 3. NLP Task Prompts
+
+(These are the 5 major text tasks)
+
+A) Text Classification
+Example 1:
+Classify the text as: Sports, Politics, Technology, Entertainment.
+
+Example 2:
+Is this message a scam? Yes or No.
+
+Example 3:
+Classify as Positive / Negative / Neutral:
+"I loved the movie!"
+
+B) Text Summarization
+Example 1:
+Summarize the paragraph in 3 bullet points.
+
+Example 2:
+Give a short 20-word summary of this text.
+
+Example 3:
+Summarize this text for a 10-year-old.
+
+C) Entity Recognition (NER)
+Example 1:
+Extract names, dates, and locations from this text.
+
+Example 2:
+Identify all financial amounts and account numbers.
+
+Example 3:
+Return all entities in JSON:
+{"entity": "", "type": ""}
+
+D) Paraphrasing
+Example 1:
+Rewrite this in simpler words.
+
+Example 2:
+Paraphrase the sentence to sound more formal.
+
+Example 3:
+Rewrite this without changing meaning.
+
+E) Translation
+Example 1:
+Translate this to Hindi.
+
+Example 2:
+Translate this English paragraph to Telugu.
+
+Example 3:
+Translate this to simple English.
+
+--- 4. Role-based Prompts
+Example 1:
+You are a senior data scientist. Explain BERT architecture.
+
+Example 2:
+You are a cyber security expert. Analyze this message for threats.
+
+Example 3:
+You are a professor. Teach me NLP from basics.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- 5. Output Formatting Prompts
+Example 1 (JSON):
+Return output in JSON:
+{"category": "", "confidence": ""}
+
+Example 2 (Table):
+Give the output in a 3-column table: Topic | Summary | Keywords
+
+Example 3 (Steps):
+Explain the process in numbered steps.
+
+--- 6. Chain-of-Thought (Reasoning) Prompts
+Example 1:
+Think step-by-step and explain how attention works in transformers.
+
+Example 2:
+Show your reasoning to decide if this message is a scam.
+
+Example 3:
+Break down the logic behind your final answer.
+
+--- 7. Guardrail / Safety Prompts
+Example 1:
+Keep the response safe and professional. Do not include harmful content.
+
+Example 2:
+Analyze the message but do not generate any threats or explicit content.
+
+Example 3:
+Avoid sensitive or personal data. Focus only on the text provided.
