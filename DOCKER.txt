@@ -1,0 +1,92 @@
+----------------------   DOCKER   --------------------------
+
+@@DOCKER:
+
+managing dependencies across different development environments and team members It addresses the classic "it works on my machine" problem, especially prevalent in large organizations and teams
+
+
+@@DOCKER CONTAINER:
+
+place where you store all your dependencies and executable code
+
+
+@@DOCKER IMAGE:
+
+docker image and docker container has the same relation as of the class and object
+
+docker image is a blueprint which helps you to create a docker container
+
+in a docker image, we can create multiple docker containers
+
+docker containers use the system resources like memory etc no the images
+
+
+@@SITUATION: RUN LINUX ON ANY OS USING DOCKER
+
+
+**-- docker run -it ubuntu
+
+@@*COMMANDS:
+
+$-pull:*
+docker pull image_name
+
+
+$-view existing images:**
+
+docker images
+
+**$-Run images: (creates containers)
+docker run image_name**
+
+2) docker run -it image_name
+
+$-check status:
+
+docker ps -a (all containers status)
+
+**docker ps  (present running containers)
+$-start/stop containers:**
+
+docker start container_name or container_id
+
+docker stop container_name or container_id
+
+docker restart container_id
+
+
+
+$- remove images/containers
+
+***docker  rmi image_name (remove image)
+docker rm container_name  (remove container)***
+
+***docker container prune  (Remove all stopped containers)
+if you want to remove an image, you need to remove the container***
+
+
+
+***@@Docker Layers:
+docker image consists of docker layers
+
+$Port Binding:***
+
+
+ docker run -p8080:3306 IMAGE_NAME
+
+
+$logs--> check logs
+
+docker logs container_name/id
+
+
+$ executive ---> check env variables without stopping the containers
+
+docker exec -it container_name/id /bin/bash
+
+
+
+@@ DOCKER VS VIRTUAL MACHINE
+
+--docker only virtualizes the top layer(application layer and uses the hosts OS layer)
+--where as a virtual machine virtualizes both the layers(application and OS layer)
