@@ -1,0 +1,1604 @@
+
+	Power BI Desktop User Interface (UI)
+
+--------
+
+	1. Data Pane 
+
+	DataSource Tables - Columns / Fileds 
+
+	Data Pane  will Show List of Tables which we loaded into Power Pivot .
+All the Tables will be Sorted in Alphabatical Order
+
+When we Expand any Table we can See Columns in the Tables 
+All the Columns Sorted in Alphabatical Order.
+
+-------------------------
+
+	2. Visualization Pane - Visualization Pane  will Show Default Visuals(Standard/Local/Native) which we use mostly.
+
+-------
+
+	3. Filters Pane - Filters pane is used to Filter the Data in the Visuals 
+
+--------------
+
+	4. Ribbon - Ribbon will Contains Multiple Tabs and Each Tab will Contains Mutiple GUI Options which we use to Develop the Report 
+
+--
+
+	5. Multiple Views 
+
+A. Report View	- Create Visuals 
+B. Table View	- Enhancing the Data Model (DAX)
+C. Model View 	- Data Modeling 
+---------
+
+	6. Report Canvas - Report Canvas is place where we will Develop the Visuals 
+
+---
+
+	7. Page Section 
+
+Page - Multiple Visuals 
+
+Report  - Mutiple Page 
+
+Using Pages Section  we can   Add , Rename , Delete , Duplicate  & Hide the Page 
+
+
+--------- Power Pivot
+
+ *  What is Power Pivot.?
+Power Pivot is a InMemory Columnar Database which is used to Build Dataset (OLAP)
+
+Database - Database is used to Store the Data in the Form of Tables 
+
+1. Tradational Databases / Relational Databases (Data Storage: Row Format)
+Eg: SQL Server , Oracle etc.,
+
+2. InMemory Databases (Data Storage: Column Format)
+Power Pivot , SAP HANA etc.,
+
+
+Advantages with Columnar Format 
+
+
+1. Data  will be Highly Compressed 
+
+
+SQL Server (100 GB) 		Power Pivot (Approx 10 GB)
+
+2. When we Perform Aggregate Calcualtions on Columnar Database it Much Faster than Row Databases
+
+------------------
+
+* What is Vertipaq Software ?
+* What is xVelocity InMemory ?
+
+
+When we Load Data to Power Pivot , this Vertipaq / xVelocity InMemory software 
+will Store the Data in Columnar Format and Compress 1/10th of the Data.
+
+-----------------------
+
+** What do we do with Power Pivot.?
+
+	As a Developer in Power Pivot we will Perform 2 Activities 
+
+
+
+1. Data Modeling (Establishing relationships b/w tables)
+
+2. Enhancing the Data Model(DAX Language)
+
+----------------
+
+ 1). Data Modeling - Establishing the Relationships Between Tables we call as  Data Modeling
+
+	Majority Of Data Modeling Work will be Done By Power BI itself 
+
+File Menu -> Options & Settings -> Options -> Current File -> Data Load Options -> Relationships
+
+
+1. Import the Relationships from Data Source on First Load  - Databases 
+
+2. Auto Detect New Realtionships Once Data is Loaded - Excel/ CSV files.. etc.
+
+---------------------------------------
+
+Model View  - Home - Manage Relationships 
+
+
+	Types of Cardanalities (Relationships)
+
+1. One to One
+2. One to Many
+3. Many to One 
+4. Many to Many
+
+------------------
+
+Data warehousing Concepts:
+
+*** What is Datatype ? How many data types we have in Power BI.?
+
+Datatype - Datatype Represents Type of Information Stored in the Column .
+
+Number DataType	- Numeric Information 
+
+Date DataType	- Date Information
+
+Text DataType	- Text  or Any Combination of Text , Number, Special Characters.
+
+---------------
+
+
+Fact Columns: Any Numeric column which creates an impact of the business or aggregatable is called Fact Column. 
+Ex: Sales, Profit, Qty, Discount...etc in Orders table.
+
+Dimension Columns: All Text & Date Columns are Dimentional Columns and some numeric columns also Dimentional(Which can't be aggregatable).
+Ex: RowId, Postal Code,  OrderDate, Region...etc in Orders table.
+	
+
+OLAP - Tables - Dimension Tables & Fact Tables 
+
+------------------
+
+	Dimension Tables - Primary Key (PK) Column + Dimension Columns 
+
+Primary Key (PK) - Unique , Not Null
+
+	Eg: Customers Table
+
+
+CustKey(PK)		CustName		Gender 		Mobile		EMail			Address
+
+1001			RAJU			M		9989686886	abc@gmail.com		Hyderabad
+1002			HARI			F		9949214864	xyz@gmail.com		Pune			
+
+	Eg:--Products Table
+
+ProdKey(PK)		ProdutName		ProdCode		Color
+
+5001			Acer Laptop 310		AL310			Balck
+5002			Oneplus6T		OP6T			Black
+
+-----------------
+
+	Fact Tables  - Foreign Key Columns + Fact Columns 
+
+Eg: Sales Table
+
+CustKey(FK)		ProdKey(FK)		Quantity		UnitPrice	Discount		SaleAmount 
+
+1001			5001			1			55000		5000			50000
+1001			5002			1			35000		5000			30000
+1002			5001			1			55000		5000			50000
+
+
+-----------------
+
+*** What are the Cardanalities? and explain them.
+
+ Types of Cardanalities (Relationships)
+
+1. One to One
+2. One to Many
+3. Many to One 
+4. Many to Many
+
+-----------------------------
+
+ One to One
+
+Dimension Table - Primary Key Columns + Dimension Columns 
+Ex: Employeee Table, Passport Table, ...etc.
+
+Primary Key: Unique Ids (No duplicates), No null values.
+
+				Employeee Table
+
+EmpId		EName		Mobile		EMail		Address
+
+101		Raju		4464646		@gmail.com	Hyd
+102		Ravi		4464645		@gmail.com	Ban
+
+
+				Passport Table
+
+EmpId			PassportNo		ISsueDate		ExpDate
+
+101			huasd			Date			Date	
+102			huasq			Date			Date	
+
+-------------
+
+One to Many (1 :M)
+
+Products Table	(ProdKey)		Sales Table(ProdKey)
+
+- Eg:--Products Table
+
+ProdKey(PK)		ProdutName		ProdCode		Color
+
+5001			Acer Laptop 310		AL310			Balck
+5002			Oneplus6T		OP6T			Black
+
+-----------------
+
+- Eg: Sales Table
+
+CustKey(FK)		ProdKey(FK)		Quantity		UnitPrice	Discount		SaleAmount 
+
+1001			5001			1			55000		5000			50000
+1001			5002			1			35000		5000			30000
+1002			5001			1			55000		5000			50000
+
+
+
+----
+
+Many to One (M:1)
+
+Sales Table(ProdKey) --------> Products Table	(ProdKey)	
+
+---------
+
+4. Many to Many (M:M)
+
+Cars Production Table          Cars Sales Table
+ M (Car Ids)			M (Car Ids)
+
+------------------------------------------------------
+
+	In older days we don't have M:M Cardinality.
+
+By creating a Bridge Table (BT) with unique values of Car- ID Column (Common column for Cars Produced, Cars Sold tables)
+
+	M:M -----------------> M:1 & 1:M Cardinalites b/w the 3 tables (CP, CS, BT)
+
+
+** Between Two Tables How Many Relationships we can Have?
+
+-- Many
+
+** Between Two Tables How Many Active Relationships we can Have?
+
+-- Only One 
+
+** Between Two Tables How Many Inactive Relationships we can Have?
+
+-- Many
+
+
+ * When we Create the Visuals it will give results Based on Active Realtionship Only.
+
+OrderDateWise		Sales
+
+ShipDateWise		Sales
+
+-----------------------
+9989 68 68 86
+
+Many to Many
+
+Cross Filter Direction
+                              
+1. Single 
+2. Both 
+
+Apply Security Filter in Both Directions (It will be applicable for Row Level Security)
+
+Assue Referential Integrity (It will be applicable for Direct Query Data Connectivity Mode)
+
+---------------------------------------------------------------------------------------------------------
+
+*** What are the different data Connectivity Modes (Connecting to the data sources) we have in Power BI.?
+
+We have 3 Data Connectivity Modes:(these will not shown when connecting to File related data sources, Ex: Excel, CSV..etc)
+1. Import.
+2. Direct Query.
+3. Connect Live/ Live.
+
+--1. Import Data Connectivity Mode.
+
+When we have less volumes of records in Servers, We use Import Data Connectivity Mode.
+
+Once we connect with Import Data Connectivity Mode, It will bring Data structure (Table Column Names)
+ along with data in the tables.
+
+When we create visuals with that data, 
+the visuals will take data from Power Pivot OLAP Model (Dataset).
+
+- View Tab -> Performance Analyser -> Start recording -> Refresh the visual -> Go to any one visual -> Copy Query.
+
+// DAX Query
+DEFINE
+  VAR __DS0Core = 
+    SUMMARIZECOLUMNS(
+      ROLLUPADDISSUBTOTAL(ROLLUPGROUP('Apr 2016'[WDayNum], 'Apr 2016'[WDay]), "IsGrandTotalRowTotal"),
+      "SumAmount", CALCULATE(SUM('Apr 2016'[Amount]))
+    )
+
+  VAR __DS0PrimaryWindowed = 
+    TOPN(502, __DS0Core, [IsGrandTotalRowTotal], 0, 'Apr 2016'[WDayNum], 1, 'Apr 2016'[WDay], 1)
+
+EVALUATE
+  __DS0PrimaryWindowed
+
+ORDER BY
+  [IsGrandTotalRowTotal] DESC, 'Apr 2016'[WDayNum], 'Apr 2016'[WDay]
+
+
+--2. DirectQuery Data Connectivity Mode.
+
+When we have huge volumes of records in Servers, We use Direct Query Data Connectivity Mode.
+
+Once we connect with Direct Query Data Connectivity Mode, 
+It will bring only Data structere (Table Column Names only).
+
+When we create visuals with that data, 
+the visuals will take data from OLTPs (SQL, ORACLE... etc Servers: External Data Sources).
+
+- View Tab -> Performance Analyser -> Start recording -> Refresh the visual -> Go to any one visual -> Copy Query.
+
+// DAX Query
+DEFINE
+	VAR __DS0Core = 
+		SUMMARIZECOLUMNS(
+			'PRODUCTS_DATA$'[EnglishProductName],
+			"SumSalesAmount", CALCULATE(SUM('SALES_DATA$'[SalesAmount]))
+		)
+
+	VAR __DS0PrimaryWindowed = 
+		TOPN(1001, __DS0Core, [SumSalesAmount], 0, 'PRODUCTS_DATA$'[EnglishProductName], 1)
+
+EVALUATE
+	__DS0PrimaryWindowed
+
+ORDER BY
+	[SumSalesAmount] DESC, 'PRODUCTS_DATA$'[EnglishProductName]
+
+
+// Direct Query
+
+SELECT 
+TOP (1001) *
+FROM 
+(
+
+SELECT [t7].[EnglishProductName] AS [c44],SUM([t8].[SalesAmount])
+ AS [a0]
+FROM 
+(
+(
+
+SELECT [ProductKey],
+CAST([SalesAmount] AS FLOAT)
+ AS [SalesAmount]
+FROM 
+(
+(
+select [$Table].[ProductKey] as [ProductKey],
+    [$Table].[OrderDateKey] as [OrderDateKey],
+    [$Table].[DueDateKey] as [DueDateKey],
+    [$Table].[ShipDateKey] as [ShipDateKey],
+    [$Table].[CustomerKey] as [CustomerKey],
+    [$Table].[PromotionKey] as [PromotionKey],
+    [$Table].[CurrencyKey] as [CurrencyKey],
+    [$Table].[SalesTerritoryKey] as [SalesTerritoryKey],
+    [$Table].[SalesOrderNumber] as [SalesOrderNumber],
+    [$Table].[SalesOrderLineNumber] as [SalesOrderLineNumber],
+    [$Table].[RevisionNumber] as [RevisionNumber],
+    [$Table].[OrderQuantity] as [OrderQuantity],
+    [$Table].[UnitPrice] as [UnitPrice],
+    [$Table].[ExtendedAmount] as [ExtendedAmount],
+    [$Table].[UnitPriceDiscountPct] as [UnitPriceDiscountPct],
+    [$Table].[DiscountAmount] as [DiscountAmount],
+    [$Table].[ProductStandardCost] as [ProductStandardCost],
+    [$Table].[TotalProductCost] as [TotalProductCost],
+    [$Table].[SalesAmount] as [SalesAmount],
+    [$Table].[TaxAmt] as [TaxAmt],
+    [$Table].[Freight] as [Freight],
+    [$Table].[CarrierTrackingNumber] as [CarrierTrackingNumber],
+    [$Table].[CustomerPONumber] as [CustomerPONumber]
+from [dbo].[SALES_DATA$] as [$Table]
+)
+)
+ AS [t8]
+)
+ AS [t8]
+
+ LEFT OUTER JOIN 
+
+(
+select [$Table].[ProductKey] as [ProductKey],
+    [$Table].[ProductSubcategoryKey] as [ProductSubcategoryKey],
+    [$Table].[WeightUnitMeasureCode] as [WeightUnitMeasureCode],
+    [$Table].[SizeUnitMeasureCode] as [SizeUnitMeasureCode],
+    [$Table].[EnglishProductName] as [EnglishProductName],
+    [$Table].[StandardCost] as [StandardCost],
+    [$Table].[Color] as [Color],
+    [$Table].[SafetyStockLevel] as [SafetyStockLevel],
+    [$Table].[ListPrice] as [ListPrice],
+    [$Table].[Size] as [Size],
+    [$Table].[Weight] as [Weight],
+    [$Table].[DaysToManufacture] as [DaysToManufacture],
+    [$Table].[ProductLine] as [ProductLine],
+    [$Table].[DealerPrice] as [DealerPrice],
+    [$Table].[Class] as [Class],
+    [$Table].[Style] as [Style]
+from [dbo].[PRODUCTS_DATA$] as [$Table]
+) AS [t7] on 
+(
+[t8].[ProductKey] = [t7].[ProductKey]
+)
+)
+
+GROUP BY [t7].[EnglishProductName]
+)
+ AS [MainTable]
+WHERE 
+(
+
+NOT(
+(
+[a0] IS NULL 
+)
+)
+
+)
+
+ORDER BY [a0]
+DESC
+,[c44]
+ASC
+ 
+
+--3. Connect Live/ Live Data Connectivity Mode. = Direct Query Data Connectivity Mode.
+
+It will used to bring the data from Power BI Service Datasets, Cubes, ...etcr
+
+** How many Storage Modes are there in Power BI.?
+
+Three Storage Modes.
+1). Import
+2). DirectQuery
+3). Dual (It will be used to see the data of DirectQuery method)
+
+---------------------------------------------------------------------------------------------------------------------
+
+---Data warehousing Concepts:
+
+Sr.No.	Data Warehouse (OLAP) (Internal/ Inmemory Database)		Operational Database(OLTP) (External Database)
+
+1	It involves historical processing of information.---->		It involves day-to-day processing.
+
+2	OLAP systems are used by knowledge workers such as 
+	executives, managers, and analysts.------------------>		OLTP systems are used by clerks, DBAs, or database professionals.
+
+3	It is used to analyze the business.------------------>		It is used to run the business.
+
+4	It focuses on Information out.	--------------------->		It focuses on Data in.
+
+5	It is based on Star Schema, Snowflake Schema, and 
+	Fact Constellation Schema (Galaxy). ----------------->		It is based on Entity Relationship Model.
+
+6	It focuses on Information out.	--------------------->		It is application oriented.
+
+7	It contains historical data. ------------------------>		It contains current data.
+
+8	It provides summarized and consolidated data. ------->		It provides primitive and highly detailed data.
+
+
+** What is Data Warehousing (DWH).?
+
+-- A data warehouse is a database (OLAP), which separates data from the organization's operational database.
+
+-- IT involves data integration, data consolidations, data cleaning, and It helps the organization to analyze its business.
+
+
+*** What is Schema.?
+
+-- It is Collection of Tables and Relationships.
+
+*** What are the Types of Schemas and explain them?
+
+-- 3Types
+
+1. Star Schema 
+2. Snowflake Schema
+3. Galaxy Schema 
+
+------------------------- 
+
+Star Schema - In a Schema, if Every Diemnsion Table is Directly Linked with Fact Table, It is called Star Schema.
+
+
+Snowflake Schema - In a Schema, if atleast one Dimension Table is not Direcltly linked with Fact Table, 
+It is called Snowflake Schema.
+
+------------
+
+**Which Schema will Give Better Performance.?
+
+-- Star Schema will Give Better Performance
+
+Snowflake Schema - 7 Tables    - Report   - 30 Secs
+Star Schema   - 5 Tables    - Report   - 15 Secs
+
+-----------------
+
+--- Star Schema 
+
+Advantages 
+
+1. Less Number Of Tables 
+2. Better Performance 
+
+Disadvantage 
+
+1. Occupy More Space (Duplicate Value ) - DeNormalized Data 
+
+----
+
+--- Snowflake Schema 
+
+Advantages
+
+1. Occupy Less Space   - No Duplicate Data - Normalized Data 
+
+Disadvantage 
+
+1. More Number Tables
+2. Performance is Less 
+
+----------------------------
+
+** In Your Project which Schema You Built ?
+
+Star Schema 
+
+** How Many Diemnsion & Fact Tables are there in Your Project ?
+
+4 Dimension Tables , 1 Fact Table.
+
+------
+
+--- Galaxy Schema 
+
+This schema is viewed as collection of stars hence called Galaxy Schema or Fact Constellation Schema.
+ In a Galaxy schema a single dimension table is shared with multiple fact tables.
+
+------------------------------------
+
+---- 1. Data Modeling (Establishing the relationships between tables)
+---- 2. Enhancing(Modifing) the Data Model ( By DAX Language)
+
+
+Enhancing the Data Model  - Creating New Information Using Existing Information 
+we call as Enhancing the Data Model 
+
+
+New Information - Existing Information  + DAX Language 
+
+DAX - Data Analysis eXpressions Language - Functional Language
+ 
+
+ DAX Language  - DAX Funnctions  + DAX Operators 
+
+	New Information will Be Created in Table View
+
+Table View -> Select the Table where we need to Create New Information -> Table Tools -> 
+Calculations -> New Information
+
+New Information - New Columns , New Measures, Quick Measures,  New Tables.
+
+DAX Expressions / DAX Formulas  -  Existing Information + DAX Funnctions  +  DAX Operators 
+
+---------------
+
+** When to Create  New Columns/ Calculated Columns.?
+
+	For Every Row in a Table if we need to Derive a Value (Calculation) 
+we will Use Calculated Columns/ New Columns.
+
+Ex: TotalSal = Emp[SAL]+Emp[COMM]
+
+DAX, Table Name and Column Name Syntax:
+
+TableName[ColumnName]
+
+'Table Name'[ColumnName]
+
+--------------------
+
+--We Can Dervie New Columns in Power Query as Well as Power Pivot. 
+
+* What is Best Place to Derive New Columns.?
+
+Power Query - New Column
+
+Advantages 
+
+1. No Need to Write Code 
+2. Data will be Compressed 
+
+Disadvantage 
+
+Preformance is Less When Compared to Power Pivot 
+
+------------------------
+
+Power Pivot - New Column 
+
+Advantages 
+
+1. Performance 
+
+Disadvantage 
+
+1. We need to Write DAX Code 
+2. It will Occupy More Space 
+
+-----------------
+
+	* When to Create New Measures / Calculated Measure.?
+
+-- When ever we need to Derive Aggregated Results (Sum, Average, Ratios, percentages..etc) we will use New/Quick Measures.
+
+i.e. For Group of Rows if we need a Value we will Create New Measures 
+
+Ex: Tot_Sal = SUMX(Emp, Emp[SAL]+Emp[COMM])
+
+** What is the difference B/w Calculated Column & Calculated Measure?
+
+Calculated Column will occufy space in existed table
+Calculated Measure will not occufy space in existed table
+
+
+** Types of Measures 
+
+1. Implicit Measure
+
+	Without Writing Formula if we Create a Measure we call as Implicit Measure 
+Ex: SAL
+
+
+2. Explicit Measure 
+
+	By Writing Formula if we Create a Mesure we call as Explicit Measure 
+
+EX: Sum.Of.Sal = SUM(Emp[SAL])
+
+1. Implicit Measures Only Work in Power BI Software.
+
+2. Explicit Measure Logic Can be Used in Other Measure Creation.
+
+------------------
+
+	DAX Language  - DAX Functions  + DAX Operators 
+
+--
+
+DAX Operators 
+
+Types of Operators
+
+--Arithmetic Operators
+
++ (Addition)
+- (Subtraction)
+* (Multiplication)
+/ (Division)
+^ (Exponentiation)
+
+=============================================
+
+
+--Comparision Operator
+
+	= (Equal to)
+	<> (Not equal to)
+	< (Less than)
+	<= (Less than or equal to)
+	> (Greater than)
+	>= (Greater than or equal to)
+
+
+--Ex1: Rvsd Sal = IF(EMP[DEPTNO]=30, EMP[Sal]+1000,'EMP'[Sal])
+
+--Ex2:	Revised Sal = IF(Emp[JOB]="Salesman", Emp[SAL]+1000, Emp[SAL])
+
+--Ex3: SalRange = IF(Emp[SAL]<=1000, "Low Sal", IF(Emp[SAL]<2000, "Med Sal", "High Sal"))
+
+Existing Information - Emp[SAL]
+DAX Finctions - IF
+Operators - Comparision Operator (=, <)
+Constants - 1000, 2000
+
+
+=================================================
+
+DAX Functions 
+
+*** What are the dax functions you used in your project.?
+--------------------
+Text Functions
+Logical Functions
+Date and Time Functions
+Filter Functions
+Math & Statistical Functions
+Time Intelligence Functions
+
+-----------------
+
+-- Text Functions
+
+-- LEN()
+
+LEN function will Returns the Number of characters in string (text).
+
+Example: CustNameLength = LEN(Orders[Customer Name])
+
+-------------------------------------------------------
+
+-- CONCATENATE() / &
+
+CONCATENATE function joins two or more strings(text columns) into one string(text column).
+
+Ex1: Cat-SubCat = CONCATENATE(Orders[Category], CONCATENATE(" - ", Orders[Sub-Category]))
+
+(OR) Ex2: Cat-SubCat1 = Orders [Category] & " - " & Orders [Sub-Category]
+
+----- CONCATENATEX()
+
+Create a Measure to Show Concatenated list of Employee Names
+
+ConEmpName = CONCATENATEX(emp,Emp[ENAME],", ")
+
+----- COMBINEVALUES()
+
+Address1 = COMBINEVALUES(", ",Orders[City],Orders[State],Orders[Country])
+
+Address2 = CONCATENATE(CONCATENATE(CONCATENATE(Orders[City],", "),Orders[State]),", "),Orders[Country])
+
+Address3 = Orders[City]& ", "&Orders[State]&", "&Orders[Country]
+
+------------------------------------------------------------
+
+--LEFT()
+
+LEFT Function Returns the specified number of characters from the start of a text string.
+
+
+Left = LEFT (Orders [State], 5)
+
+---------------------------------------------------------------------
+
+--RIGHT()
+
+RIGHT function returns the last character or characters in a text string, based on the number of characters you specify.
+
+Right = RIGHT (Orders [State], 5)
+
+-------------------------------------------
+
+-- MID()
+
+MID Function Returns a string of characters from the middle of a text string, given a starting position and length.
+
+Mid = MID (Orders [State], 3, 5)
+
+-----------------------------------------------------
+
+-- UPPER()
+
+UPPER Function Converts a text string to all uppercase letters.
+
+Upper = UPPER (Orders [Country])
+
+------------------------------------------------------------
+
+-- LOWER()
+
+Lower Function Converts all letters in a text string to lowercase letters.
+
+Lower = LOWER (Orders [Country])
+
+------------------------------------------------------------------
+
+-- TRIM()
+
+TRIM Function Removes all spaces from text except for single spaces between multiple words of a text column.   
+
+Address1 = TRIM(Orders[Address])
+------------------------------------------------------------------
+
+-- SUBSTITUTE()
+
+SUBSTITUTE Function Replaces existing text with new text in a string.
+
+Substitute.State = SUBSTITUTE(Orders[State], "t", "T")   # Replace existing text with new text for all occurrences 
+Substitute.State = SUBSTITUTE(Orders[State], "a", "A", 2) # Replace existing text with new text for second occurrence only.
+
+SubEx = SUBSTITUTE(Orders[Order ID],"-",", ")
+SubtEx = SUBSTITUTE(Orders[Order ID],"-",", ",2)
+
+------------------------------------------------------------------------
+
+-- REPLACE():It replaces a text values from a specific position of text and then to no of characters
+
+State.Replace = REPLACE(Orders[State], 2, 3, "@")
+
+------------------------------------------------------------------------
+
+-- BLANK()
+
+Returns a blank.
+
+Usage
+
+Avoids ‘Divide by zero’ error.
+
+Ex1: QuantityByDiscount = Orders[Quantity]/Orders[Discount] # Resulted with some infinities (Errors).
+
+Ex2: QtyByDis1 = if(Orders[Discount]=0, BLANK() ,Orders[Quantity]/Orders[Discount])
+
+-----------------
+
+------DAX Logical Functions: 
+
+--IF()
+
+IF function is used to check the given expression is either True or False. 
+
+Syntax-IF(LogicalTest, ResultIfTrue, [ResultIfFalse])
+
+	If the expression results TRUE then second argument will return, otherwise third argument will return.
+
+	The last argement in Square Brackets is optional, If you are not providing this i.e. if the condition is not satisfied it will return NULL values. 
+
+Ex1: SalRange = IF(Emp[SAL]<1500, "LowSal")
+Ex: Sal.Range = IF(Emp[SAL]<1500,"MinSal", "HighSal")
+
+---Nested IF Function
+
+In Power BI DAX, you can use the Nested If concept i.e. Multiple If functions. 
+
+Ex1: SalRange = IF(Orders[Sales]<100,"Low Sales", IF(Orders[Sales]>300, "High Sales", "Avg Sales"))
+
+Ex2: SalCategory = IF(Emp[SAL]<1000, "Low Sal", IF(Emp[SAL]>=3000, "High Sal", "Med Sal"))
+
+Ex3: DNAME = IF(Emp[DEPTNO]=10,"SALES",IF(Emp[DEPTNO]=20,"HR",IF(Emp[DEPTNO]=30,"MARKETING","ANALYST")))
+
+--------------------------------------------
+
+TRUE(), FALSE()
+
+The DAX TRUE function will return a text value True. The DAX FALSE function will return text value False.
+
+Ex1: True/False = (IF(Emp[DEPTNO]=10,TRUE(),FALSE()))
+
+NOT()
+
+The DAX NOT function will convert to reverse logic i.e. True to False and False to True.
+
+Ex2: Not.True/False = NOT(IF(Emp[DEPTNO]=10, TRUE(), FALSE()))
+
+Ex3: CommB = IF(ISBLANK(Emp[COMM]),1,0)
+
+Ex4: Comm.Blank = IF(ISBLANK(Emp[COMM]), 1, Emp[COMM])
+
+------------------------------------------
+SWITCH()
+
+The DAX SWITCH function helps you to return multiple options. 
+
+Note: SWITCH () always test for equivalence. 
+
+-DNAME = IF(Emp[DEPTNO]=10,"SALES",IF(Emp[DEPTNO]=20,"HR",IF(Emp[DEPTNO]=30,"MARK",IF(Emp[DEPTNO]=40,"IT","UnKnown"))))
+
+Ex1: DNameSwitch = SWITCH(Emp[DEPTNO],10,"Sales",20,"HR",30,"Marketing","UnKnown")      # test for equivalence.
+
+EX2: Sal.Cat = SWITCH(TRUE(), Emp[SAL]<1300,  "Low Salary", Emp[SAL]>2500, "High Salry", "Med Salary")
+
+Ex3: Switch Example = SWITCH (TRUE (), Orders [Sales]<100, "Low Sales”, Orders[Sales]>300,"High Sales”, “Medium Sales")
+
+--------------------------------------------
+
+OR() / || (Double Pipe Symble)
+
+The DAX OR function is like either or statement in English, which is used to check multiple expressions. 
+
+Weekday = WEEKDAY (Orders [Order Date])
+Ex1: Weekend = IF(OR(Orders[Weekday]=1, Orders[Weekday]=7),"Weekend", "Weekday")
+Ex2: Weekend1 = IF(Orders[Weekday]=1 || Orders[Weekday]=7,"Weekend", "Weekday")
+
+	Cond1	Cond2	Result
+	T	T	T
+	T	F	T
+	F	T	T
+	F	F	F
+	    
+-----------------------------------------------------
+
+IN - Operator
+
+INExample = IF(Orders[Weekday] IN {2,3,4,5,6}," Weekday ", "Weekend")
+WWInOpe = IF(Orders[DaYName] IN {"Saturday","Sunday"},"Weekend","Weekday")
+-------------------------------------------------------
+
+AND()  /  && (Double Ampersand) : For this both the conditions must be satisfied.
+
+The DAX AND function is used to check multiple expressions.
+
+And Example = IF(AND(Orders[Category]="Office Supplies", Orders[Sub-Category] = "Storage"), TRUE (), FALSE ())
+And example = IF(Orders[Category]="Office Supplies" && Orders[Sub-Category] = "Storage", TRUE(), FALSE())
+
+RvsdSal = IF(AND(Emp[DEPTNO]=30,Emp[JOB]="SALESMAN"),Emp[SAL]+1000,Emp[SAL])
+RSal = IF(Emp[DEPTNO]=30 && Emp[JOB]="SALESMAN",Emp[SAL]+1000, Emp[SAL])
+
+	Cond1	Cond2	Result
+	T	T	T
+	T	F	F
+	F	T	F
+	F	F	F
+
+----------------------------------------------------------
+
+IFERROR()
+
+The DAX IFERROR function is very useful to handle the arithmetic overflow, or any other errors.
+It simply performs calculation and return the result, if there is an error then it will return the value inside the second argument.  
+
+Sal.By.Comm = Emp[SAL] / Emp[COMM]
+
+Error.Example = IFERROR(Emp[SAL] / Emp[COMM], 100)
+
+--------------------------------------------------------------
+
+
+
+---
+Assignment:
+SalRangeIf = IF(Emp[SAL]<1000,"LowSal",IF(Emp[SAL]>=3000,"HighSal","MediumSal"))
+SalRangSwitch = SWITCH(TRUE(),Emp[SAL]<1000,"LowSal",Emp[SAL]>=3000,"HighSal","MediumSal")
+Switch Example = SWITCH (MONTH (Orders [Order Date]), 1, "January", 2, "February", 3, "March", 4, "April", 5, "May", 12, "December", "Unknown")
+
+------------------------------------ 0 ------------------------------------------------
+
+---Date and Time Functions
+----------------------------
+
+Year() - Year Function will derive Year from given Date
+
+Quarter() - Quarter Function will Derive Quarter Number from a Given date(1-4)
+
+Month() - Month Function will derive "Month Number" from given Date(1-12)
+
+Day() - Day Function will derive Day from given date (1-31)
+
+Weekday() - Weekday function will derive weekday number from given date(1-7) (Sun-Sat)
+
+Weeknum() - Weeknum function will derive week number of year from given date (1-52/53)
+
+Format() - Use Format function to derive Month Name and Weekday Name 
+	Month Name = Format (Orders [Order Date],"MMMM")   --> Gives full Month Name
+	Month Name = Format (Orders [Order Date],"MMM")   --> Gives Month Name (1st 3 letters)
+	Weekday Name = FORMAT (Orders [Order Date],"DDDD")   --> Gives Full Weekday Name
+	Weekday Name = FORMAT (Orders [Order Date],"DDD")   --> Gives Weekday Name (1st 3 letters)
+
+DATE() - Date function will accept Year,Month and Day and will return Date
+
+TODAY() - Today function will return todays Date and day start time
+
+NOW() - Now function will return todays Date and current Time    - If You need Difference in Hours
+
+HOUR() - Hour funtion will return Hours from given Date and time
+
+MINUTE() - Minute funtion will return Minutes from given Date and time
+
+SECOND() - Second funtion will return Seconds from given Date and time
+
+TIME() - Takes Hours, Minutes and Seconds and gives you the time
+
+DATEDIFF() - Datediff function will give the difference between two dates.
+	No of Days = DATEDIFF (Orders [Order Date], Orders [Ship Date], DAY)
+	(Select don’t summarize for No of Days to get correct results)
+
+YEARFRAC() - Calculates the fraction of the year represented by the number of whole days between two dates.
+Ex: YearsOfExp = YEARFRAC(TODAY(),Emp[HIREDATE])
+
+CALENDAR() - The calendar function returns a table with a single column that contains a continuous set of dates. 
+The start and end date range will be supplied as parameters.
+
+CALENDARAUTO() - Date Range(MinDate, MaxDate) will be taken automatically from the date columns of existed (available) tables.
+
+EDATE() - Returns the date that is indicated number of months before or after the start date.
+	Syntax: EDATE ( <StartDate>, <Months> )
+
+Ex1: Edate = EDATE(Emp[HIREDATE], 1) # It will show a date after one month of the start date.
+
+Ex1: Edate1 = EDATE(Emp[HIREDATE], -2) # It will show a date before two months of the start date.
+
+EOMONTH() - Gives end of the Month for given Date. 
+You can add even Months to the date "0" for current Month and 1 for Next month so on.
+Returns the date in datetime format of the last day of the month before or after a specified number of months.
+Ex: NoofDayInMonth = DAY(EOMONTH(Emp[HIREDATE],0))
+
+STARTOFMONTH() - Returns the start of month.
+
+DATEVALUE() - Converts a date in the form of text to a date in datetime format.
+
+25-March-2020
+25-Mar-2020
+03-25-2020
+
+---------------------
+
+-- Assignment.
+
+CALENDAR(Start_Date,End_Date)
+
+Day = DAY(Dim_Date[Date])
+WeekDay = WEEKDAY(Dim_Date[Date])
+WeekDayName = FORMAT(Dim_Date[Date],"DDDD")
+Month = MONTH(Dim_Date[Date])
+MonthName = FORMAT(Dim_Date[Date],"MMMM")
+Quarter = QUARTER(Dim_Date[Date])
+QuarterName = "Qtr " & Dim_Date[Quarter]
+QuarterName = CONCATENATE ("Qtr", Dim_Date[Quarter])
+Year = YEAR(Dim_Date[Date])
+WeekNumberYear = WEEKNUM(Dim_Date[Date])
+WeekNameYear = "Week " &WEEKNUM(Dim_Date[Date])
+WeekNumMonth = 1 + WEEKNUM (Dim_Date[Date]) - WEEKNUM(STARTOFMONTH(Dim_Date[Date]))
+WeekNameMonth = "Week" & " " & Dim_Date[WeekNumMonth]
+
+------------------------------------------
+
+
+*** What are filter functions? explain them.
+
+--- Filter Functions 
+
+CALCULATE(): It will be used in creating measures.
+
+Calculate Function Evaluate an Expression in the Context Modified by the Filter.
+
+Ex1: Create a Measure to Show Sum Of Sales
+SumOfSales = SUM(Orders[Sales])
+
+Ex2: Create a Measure to Show Sum Of Sales where Region ="East"
+EastSales = CALCULATE(SUM(Orders[Sales]), Orders[Region] = "East")
+
+
+Ex3: Create a Measure to Show Sum Of Sales where Region ="East" AND Category="Technology"
+East&TechSales = CALCULATE(SUM(Orders[Sales]),Orders[Region]="East",Orders[Category]="Technology")
+
+Ex4: Create a Measure to Show Sum Of Sales where Region ="East" OR Region ="West"
+East/WestSales = CALCULATE(SUM(Orders[Sales]),Orders[Region]="East" || Orders[Region]="West")
+
+---------------------------------
+
+ALL Functions
+
+1. ALL( )
+ALL Function will Returns all the rows in a table, or all the values in a column, ignoring any filters that might have been applied.
+i.e It ignores inside filters as well as out side filters.
+
+Syntax: ALL ( [<TableNameOrColumnName>] [, <ColumnName> [, <ColumnName> [, … ] ] ] )
+
+Ex1: All.RegionCol = CALCULATE(SUM(Orders[Sales]), ALL(Orders[Region]))  i.e for all the values in a column (Region)
+
+Ex2: All = CALCULATE(SUM(Orders[Sales]), ALL(Orders)) i.e for all the values in a Table (Orders)
+
+Sales % All = DIVIDE(Orders[SumOfSales], [All])
+
+
+2. AllSelected( )
+ALL Selected Function will Returns all the rows in a table, or all the values in a column,
+ignoring any filters that might have been applied inside the query, but keeping filters that come from outside.
+
+i.e: It Keeps only out side filters.
+
+
+Ex1. AllSelected = CALCULATE(Orders[SumOfSales], ALLSELECTED(Orders))
+Sales% AllSelected = DIVIDE(Orders[SumOfSales], [AllSelected])
+
+
+3. AllExcept( )
+
+When we are dealing with hierarchical data, The requirement is to calculate % of the parent total. Then it will be used.
+
+Ex1. AllExcept = CALCULATE(Orders[SumOfSales], ALLEXCEPT(Orders, Orders[Category]))
+Sales% AllSelected = DIVIDE(Orders[SumOfSales], [AllSelected])
+
+--------------------------------------------------------------------
+
+USERELATIONSHIP(): It will be used for Inactive Relationships.
+
+Ex: Show the following Table by using USERELATIONSHIP()
+
+Year	 	OrderDate Sales  	ShipDate Sales
+2012		-----			----
+2013		-----			----
+2014		-----			----
+2015		-----			----
+2016		-----			----
+----		-----			----
+
+Ex1: ShipDateSales = CALCULATE(SUM(Orders[Sales]), USERELATIONSHIP(Orders[Ship Date],'Dim.date'[Date]))
+
+-------------
+
+
+RELATED( )   - In Many(*) Side Table, if we need to Derive a Column which is from 1 side Table then we will use it.
+ 
+Ex: DName = RELATED(Dept[DNAME])
+
+
+LOOKUPVALUE( ): Relationship is not required.
+
+Ex: Mngr_Name = LOOKUPVALUE(Manager[MGRNAME], Manager[MGR], Emp[MGR])
+
+RELATEDTABLE( ) - In 1 Side Table if we need to Derive a Column which is from many(*) side Table then we will use it.
+
+SumOfSal = CALCULATE(SUM(Emp[SAL]),RELATEDTABLE(Emp))
+
+--------
+
+- FILTER( ): It filters the data in a table by row context
+Ex:New Table->  EastData = FILTER(Orders, Orders[Region]="East")
+
+--Row context: It does calculation for each row with values within that row.
+Actual.Cost = SUMX(FILTER(Orders, Orders[Region]="East"), Orders[Sales] - Orders[Profit])
+Ex: Adding New Rows, FILTER( )
+
+CALCULATETABLE( ): It filters the data in a table by filter context
+Ex: 10th_Dept_Emp = CALCULATETABLE(Emp, Emp[DEPTNO]=10)
+
+--Filter context: It is set of filters that applied before that table arrives for use.
+Ex: Creating Measures, applying filters from Filter Pane(Year=2017) (or) Visuals (Region="East") (or) Slicers(State="Maharasthra")
+
+
+- SUMMARIZE( ): Filters the data for Group of Rows.
+
+i.e. It returns a summary table or aggregated table for the required totals over a set of groups.
+
+Ex1: RegionWiseSales = SUMMARIZE(Orders, Orders[Region], "Sum of Sales", SUM(Orders[Sales]))
+
+Ex2: CategoryRegion_SalesProfits = SUMMARIZE(Orders, Orders[Category], Orders[Region], "Total Sales", SUM(Orders[Sales]), "Total Profits", SUM(Orders[Profit]))
+
+** What is Variable.?
+
+--- Variables: Variables are used to store the results of DAX eXpressions.
+
+Note1: A variable can be a hardcoded value or the result of a complex DAX eXpression.
+Note2: Variables can be used in any type of DAX Calculation including Calculated Columns, Measures & Tables.
+
+Advantages: Easy Code Readability (Use DAX Formatter) & Faster Performance.
+
+Syntax:  VAR 	  MyVariable = Expression
+
+	 RETURN
+		  MyVariable	
+
+Ex1:-- Variables in New Measure Creation
+
+Sales % =
+VAR SumOfSales =
+    SUM ( Orders[Sales] )
+VAR AllSales =
+    CALCULATE ( SUM ( Orders[Sales] ), ALL ( Orders ) )
+RETURN
+    SumOfSales / AllSales
+
+
+Ex2:-- Variable in New Column Creation
+
+Product.DelType = 
+VAR DelDays =
+    DATEDIFF ( Orders[Order Date], Orders[Ship Date], DAY )
+RETURN
+    IF ( DelDays <= 2, "Speed Del", IF ( DelDays <= 5, "Normal Del", "Late Del" ) )
+
+-------------------------------------------
+
+------- Mathematical & Statistical Functions.
+
+--- Mathematical Functions.
+
+- INT(): It rounds a number down to next integer.
+
+Ex: Int.ShippingCost = INT(Orders[Shipping Cost])
+
+- ROUND(): It rounds to a number to the given No.of digits.
+
+Ex1: Round.ShipCost = ROUND(Orders[Shipping Cost], 0)
+Ex2: Round.ShipCost = ROUND(Orders[Shipping Cost], 1)
+
+
+- ROUNDUP(): It Rounds a number to next integer value, If No.of digits=0.
+
+Ex1: RoundUp.ShipCost = ROUNDUP(Orders[Shipping Cost], 0)
+Ex2: RoundUp.ShipCost = ROUNDUP(Orders[Shipping Cost], 1)
+
+- ROUNDDOWN(): It Rounds a number to integer value, If No.of digits=0.
+
+Ex1: RoundDown.ShipCost = ROUNDDOWN(Orders[Shipping Cost], 0)
+Ex2: RoundDown.ShipCost = ROUNDDOWN(Orders[Shipping Cost], 1)
+
+- DIVIDE(): It performs division and returns alternate result or blank on division by 0.
+
+EX1: SalesByQuantity= DIVIDE(Orders[Sales], Orders[Quantity])
+EX2: 200By4= DIVIDE(200, 4)
+EX3: 100By0.Blank= DIVIDE(100, 0)
+EX4: 100By0.-1= DIVIDE(100, 0, -1)	# Instead of blank, we will get -1.
+
+- EVEN(): It Returns a number roundedup to the next nearest even integer.
+
+Ex1: Even.ShipCost = EVEN(Orders[Shipping Cost])
+
+
+- ODD(): It Returns a number roundedup to the next nearest Odd integer.
+
+Ex1: Odd.ShipCost = ODD(Orders[Shipping Cost])
+
+
+- POWER(): It returns the result of a number raised to a power.
+
+EX1: 4Power2= POWER(4,2)= 4^2= 16
+EX2: Qty.Power.Qty= POWER(Orders[Quantity], Orders[Quantity])
+
+- SIGN(): It returns 1 If the number is +ve, It returns 0 If the number is 0, It returns -1 If the number is -ve.
+
+Ex: Sign.Profit= SIGN(Orders[Profit])
+
+- SQRT(): It returns Squareroot of a number. And It returns an Error If the number is -ve.
+
+Ex: Sqrt.Profit= ROUND(SQRT(Orders[Profit]), 2)
+
+
+- FACT(): It returns factorial of a number. And It returns an Error If the number is -ve.
+
+Ex1: Fact.Quantity= FACT(Orders[Quantity])
+EX2: FACT(3)= 3*2*1=6
+
+--- Statistical Functions.
+
+- Measures are used to find Ratios or %'s or Aggregated Results (For Group of Rows).
+
+*** What is the difference b/w Sum() & SumX() ?
+
+-SUM(): It adds all the numeric values from a single column. (i.e It allows only single column)
+
+Ex: SumOfSalary= SUM(Emp[Sal])
+
+-SUMX(): It adds all the numeric values from the multiple columns of an expression.  (i.e It allows multiple columns)
+
+i.e. It returns the sum of an expression evaluated for each row in a table.
+Syntax: SUMX(<Table>, <Expression>)
+
+Ex: SumX.Salary= SUMX(Emp, Emp[Sal]+Emp[Comm])
+
+-MIN(): It returns the smallest numeric value from a single column.
+
+Ex: MinSal = MIN(Emp[SAL])
+
+-MINX(): It returns the smallest numeric value from multiple columns of an expression.
+
+Ex: MinX.Salary= MINX(Emp, Emp[Sal]+Emp[Comm])
+
+-MAX(): It returns the largest numeric value from a single column.
+
+Ex: MaxSal = MAX(Emp[SAL])
+
+-MAXX(): It returns the largest numeric value from multiple columns of an expression.
+
+Ex: MaxX.Salary= MAXX(Emp, Emp[Sal]+Emp[Comm])
+
+-COUNT(): It counts the No. of cells in a Single Column.
+
+Ex: Count.Comm= COUNT(Emp[COMM])
+
+-COUNTX(): It counts the No. of cells from multiple columns of an expression.
+
+Ex: CountX.TotSal= COUNTX(Emp, Emp[Sal]+Emp[Comm])
+
+
+-AVERAGE(): It returns the Average value from a single column.
+
+Ex: Avg.Sal = AVERAGE(Emp[SAL])
+
+-AVERAGEX(): It returns the Average value from multiple columns of an expression.
+
+Ex: AvgX.Sal= AVERAGEX(Emp, Emp[Sal]+Emp[Comm])
+
+-COUNTROWS(): Counts Total rows in a table.
+
+Ex: TotRows = COUNTROWS(Emp)
+
+-COUNTBLANK(): It Counts No.of blank cells in a Column.
+
+Ex: Blank.Comm= COUNTBLANK(Emp[COMM])
+
+-- RANKX(): It will be used for Rankings.
+
+Ex:- Rank the Salaries for Each Employees.
+
+Syntax: RANKX(Table, Exp[ , Val], [ , ORDER], [ , TIES], .....)
+
+ORDER(): Either in Ascending or Descending Order --> Default is Desc.
+
+Asc --> Least Value 1st Rank, 2nd Least Value 2nd Rank and so on...
+
+Desc --> Largest Value 1st Rank, 2nd Largest Value 2nd Rank and so on...
+
+TIES(): Either Dense or Skip --> Default is Skip.
+
+Dense--> It will not Skip b/w Rank Numbers.
+
+Skip--> It will Skip b/w Rank Numbers.
+
+Note: Optional Arguments might be skipped by placing an empty comma (,) in Argument List.
+
+i.e.  Sal.RankX= RANKX(Emp, Emp[Sal], , , Dense)
+
+
+------- Time Intelligence Functions
+
+	Time Intelligence means doing calculations over periods of time or date. 
+	Time Intelligence Functions will need have a DATE column to perform the calculations.
+
+	This Date column must contain 1)unique dates, 2)no null and 3) contiguous date values to get the accurate results.
+
+	You will find a Date Column in Dimension Date Table Which will Satify the above 3 Conditions.
+
+	To make DAX Time Intelligence functions work properly set Dimension Date Table as “Mark as date table”.
+
+When you specify your own date table, Power BI Desktop performs the following validations of that column and its data, to ensure that the data
+	contains unique values
+	contains no null values
+	contains contiguous date values (from beginning to end)
+	if it is a Date/Time data type, it has the same timestamp across each value
+-----------------------------------------------------------------------------
+
+
+--DAX Time Intelligence Functions
+-----------------------------------------------------------------------------
+	TOTALMTD() - MonthToDate
+
+Evaluates the value of the expression for the month to date, in the current context. 
+TOTALMTD will give Running Totals or cumulative total for each Month.
+
+RunningTotal MTD = TOTALMTD(SUM(Orders[Sales]), Dim_Date[Date])
+
+-----------------------------------------------------------------------------
+	TOTALQTD() - QuarterToDate
+
+Evaluates the value of the expression for the dates in the quarter to date, in the current context. 
+TOTALQTD will give Running Totals or cumulative sum for each Quarter.
+
+RunningTotal QTD = TOTALQTD(SUM(Orders[Sales]), Dim_Date[Date])
+-----------------------------------------------------------------------------  D1- 2, D2-5, D3-2
+	TOTALYTD()  - YearToDate
+
+Evaluates the year-to-date value of the expression in the current context. 
+TOTALYTD will give Running Totals or cumulative sum for each year.
+
+Total YTD = TOTALYTD(SUM(Orders[Sales]), Dim_Date[Date])
+
+
+*** -- Cumulative Totals for last 7 days in a table
+
+Ex: Last7DaysRT = CALCULATE(SUM(Orders[Quantity]), DATESINPERIOD(Dim_Table[Date], LASTDATE(Dim_Table[Date]),-7,DAY))
+
+*** -- Cumulative Totals for entire data/ table
+
+Ex: Cumulativies = CALCULATE([SumOfSales], ALL(Orders), Dim_Table[Date] <= MAX(Dim_Table[Date]))
+
+--------------------------------------------------------------------------------
+
+	PREVIOUSYEAR
+
+Returns a table that contains a column of all dates from the previous year, given the last date in the dates column, in the current context.
+
+PYSales = CALCULATE(SUM(Orders[Sales]), PREVIOUSYEAR(Dim_Date[Date]))
+
+YOY Growth % = DIVIDE(Orders[SumOfSales]-[PYSales], [PYSales])
+
+--------------------------------------------------------------------------------
+
+	PREVIOUSQUARTER
+
+Returns a table that contains a column of all dates from the previous quarter, based on the first date in the dates column, in the current context.
+
+PQSales = CALCULATE(SUM(Orders[Sales]), PREVIOUSQUARTER(Dim_Date[Date]))
+
+QOQ Growth% = DIVIDE(Orders[SumOfSales]-[PQSales], [PQSales])
+
+Prev6MonthSales = CALCULATE(SUM(Orders[Sales]),PREVIOUSMONTH(DATEADD(Dim_Date[Date],-6,MONTH)))
+
+--------------------------------------------------------------------------------
+
+	PREVIOUSMONTH
+
+Returns a table that contains a column of all dates from the previous month, based on the first date in the dates column, in the current context.
+
+PMSales = CALCULATE(Orders[SumOfSales], PREVIOUSMONTH(Dim_Date[Date]))
+
+MOM Growth % = DIVIDE(Orders[SumOfSales]-[PMSales], [PMSales])
+
+--------------------------------------------------------------------------------
+
+	PREVIOUSDAY
+
+Returns a table that contains a column of all dates representing the day that is previous to the first date in the dates column, in the current context.
+
+PDSales = CALCULATE(Orders[SumOfSales], PREVIOUSDAY(Dim_Date[Date]))
+
+DOD Growth % = DIVIDE(Orders[SumOfSales]-[PDSales], [PDSales])
+
+--------------------------------------------------------------------------------
+
+-- SAMEPERIODLASTYEAR()
+
+It gives the values in a column for Same Period Last Year(One Year Back) (Ex: Seasonal Business)
+
+
+By using same period last year, you will be knowing
+	Last Year Same Month what is the value
+	Last Year Same Quarter what is the value
+	Last Year what is the Value
+
+Same Period Last Year (SPLY Growth)
+SPLY Sales = CALCULATE([SumOfSales], SAMEPERIODLASTYEAR(Dim_DateTable[Date]))
+SPLY Growth % = DIVIDE([SumOfSales]-[SPLY Sales], [SPLY Sales])
+
+
+-- DATEADD() - Moves the given set of dates forward or backward by a specified interval(Days, Months, Quarter, Year).
+		
+		Ex: DateAdd-2M = CALCULATE([SumOfSales], DATEADD(Dim_DateTable[Date], -2, MONTH))
+
+
+-- PARALELLPERIOD() - Moves the given set of dates forward or backward by a specified interval(Months, Quarter, Year).
+
+
+--------------------------------------------------------------------------------
+
+NEXTDAY
+
+Returns a table that contains a column of all dates from the next day, based on the first date specified in the dates column in the current context.
+
+Next Day = CALCULATE ([Sum of Sales], NEXTDAY(Dim_Date[Date]))
+--------------------------------------------------------------------------------
+NEXTMONTH
+
+Returns a table that contains a column of all dates from the next month, based on the first date in the dates column in the current context.
+
+Next Month = CALCULATE ([Sum of Sales], NEXTMONTH(Dim_Date[Date]))
+
+--------------------------------------------------------------------------------
+NEXTQUARTER
+
+Returns a table that contains a column of all dates in the next quarter, based on the first date specified in the dates column, in the current context.
+
+Next Quarter = CALCULATE ([Sum of Sales], NEXTQUARTER(Dim_Date[Date]))
+--------------------------------------------------------------------------------
+
+NEXTYEAR
+
+Returns a table that contains a column of all dates in the next year, based on the first date in the dates column, in the current context.
+
+Next Year = CALCULATE ([Sum of Sales], NEXTYEAR(Dim_Date[Date]))
+--------------------------------------------------------------------------------
+
+MOM Growth
+
+SumofSales = SUM(Orders[Sales])
+LastMonthSales = CALCULATE(SUM(Orders[Sales]), PREVIOUSMONTH(Dim_Date[Date]))
+% MOM = DIVIDE (([SumofSales]- [Last Month Sales]) , [Last Month Sales])
+
+--------------------------------------------------------------------------------
+
+PrevYearSales = CALCULATE(SUM(Orders[Sales]),PREVIOUSYEAR(Dim_Date[Date]))
+
+
+%Sales = ([SumOfSales]-[SamePrdLastYear])/[SamePrdLastYear]
+
+%Sales = ([SumOfSales]-[SamePrdLastYear])/[SamePrdLastYear]
+
+%YoY = ([SumSales]-[PYSales])/[PYSales]
+
+----------------------------------------------------------------------
+
+Quick Measures   - Without Writing the Formula You can Create Measures like below.
+
+Sales MoM%, Sales MoM%, Sales YoY%
+MTD,QTD, YTD...etc.
+
+----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
